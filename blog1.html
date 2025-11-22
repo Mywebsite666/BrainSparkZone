@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainSparkZone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            cursor: pointer;
+            display: inline-block;
+            padding: 14px 16px;
+            color: white;
+            border: none;
+            background-color: inherit;
+            font-family: inherit;
+            font-size: 16px;
+            margin: 0;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .button-container button {
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .logo {
+            height: 40px; /* Adjust height as needed */
+        }
+        .marquee {
+            background-color: #f9f9f9;
+            padding: 10px;
+            color: #333;
+            font-size: 18px;
+            text-align: center;
+        }
+        .content {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="Home.html">Home</a>
+    <a href="about.html">About</a>
+    <div class="dropdown">
+        <button class="dropbtn">Services</button>
+        <div class="dropdown-content">
+            <a href="calc.html">Online Calculator</a>
+            <a href="quiz.html">Quiz</a>
+        </div>
+    </div>
+    <a href="encoding.html">Encoding</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="paint.html">Paint</a>
+</div>
+
+<div class="marquee">
+    <marquee behavior="scroll" direction="left">Welcome to our website! Enjoy your stay!</marquee>
+</div>
+
+<div class="button-container">
+    <div>
+        <h1>Change Background Color</h1>
+        <button onclick="changeColor('pink')">Pink</button>
+        <button onclick="changeColor('lightgreen')">Green</button>
+        <button onclick="changeColor('lightblue')">Blue</button>
+    </div>
+    <img src="blogo.png" alt="Logo" class="logo"> 
+</div>
+
+<h1>Brain Spark Zone</h1>
+
+<div class="content">
+    <h2>How to Increase Memory</h2>
+    <p>Improving your memory is essential for academic success and personal development. Here are some effective strategies to enhance your memory:</p>
+    <h3>1. Stay Organized</h3>
+    <p>Keeping your environment and schedule organized helps you remember things better. Use planners, to-do lists, and calendars to track important dates and tasks.</p>
+    
+    <h3>2. Practice Mindfulness</h3>
+    <p>Mindfulness meditation can improve focus and memory. By practicing mindfulness, you train your brain to concentrate better, which enhances memory retention.</p>
+
+    <h3>3. Get Plenty of Sleep</h3>
+    <p>Adequate sleep is crucial for memory consolidation. Aim for 7-9 hours of quality sleep each night to allow your brain to process and store information.</p>
+
+    <h3>4. Exercise Regularly</h3>
+    <p>Physical activity increases blood flow to the brain, which can enhance cognitive functions and memory. Try to incorporate regular exercise into your routine.</p>
+
+    <h3>5. Eat a Brain-Boosting Diet</h3>
+    <p>Foods rich in antioxidants, good fats, vitamins, and minerals provide energy and aid in protecting against brain diseases. Include fruits, vegetables, fish, and nuts in your diet.</p>
+
+    <h3>6. Use Mnemonic Devices</h3>
+    <p>Mnemonic devices are tools that help you remember information better. Techniques like acronyms, visualization, and rhymes can enhance memory retention.</p>
+</div>
+
+<footer>
+    <p>&copy; 2024 BrainSparkZone.com All rights reserved.</p>
+    <p><a href="privacy.html" style="color: white; text-decoration: underline;">Privacy Policy</a> | 
+    <a href="terms.html" style="color: white; text-decoration: underline;">Terms of Service</a></p>
+</footer>
+
+<script>
+    function changeColor(color) {
+        document.body.style.backgroundColor = color;
+    }
+</script>
+
+</body>
+</html>
