@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Light background color for contrast */
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            cursor: pointer;
+            display: inline-block;
+            padding: 14px 16px;
+            color: white;
+            border: none;
+            background-color: inherit;
+            font-family: inherit;
+            font-size: 16px;
+            margin: 0;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .button-container button {
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .button-container button:hover {
+            background-color: #555;
+        }
+        .logo {
+            height: 40px; /* Adjust height as needed */
+        }
+        .marquee {
+            background-color: #f9f9f9;
+            padding: 10px;
+            color: #333;
+            font-size: 18px;
+            text-align: center;
+        }
+        .drawing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        canvas {
+            border: 2px solid #ccc;
+            cursor: crosshair;
+            background-color: #fff; /* White background for drawing */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        }
+        .pen-tools {
+            margin: 10px 0;
+        }
+        .pen-tools button {
+            margin: 0 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .pen-tools button:hover {
+            background-color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="Home.html">Home</a>
+    <a href="about.html">About</a>
+    <div class="dropdown">
+        <button class="dropbtn">Services</button>
+        <div class="dropdown-content">
+            <a href="calc.html">Online Calculator</a>
+            <a href="quiz.html">Quiz</a>
+        </div>
+    </div>
+    <a href="encoding.html">Encoding</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="paint.html">Paint</a>
+</div>
+
+<div class="marquee">
+    <marquee behavior="scroll" direction="left">Welcome to our website! Enjoy your stay!</marquee>
+</div>
+
+<h1 align="center">Brain Spark Zone </h1>
+
+<div class="button-container">
+    <div>
+        <h4>Change Background Color</h4>
+        <button onclick="changeColor('pink')">Pink</button>
+        <button onclick="changeColor('lightgreen')">Green</button>
+        <button onclick="changeColor('lightblue')">Blue</button>
+    </div>
+    <img src="blogo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+</div>
+
+<div class="drawing-container">
+    <h2>Drawing Canvas</h2>
+    <canvas id="drawingCanvas" width="800" height="400"></canvas>
+    <div class="pen-tools">
+        <button onclick="setPenColor('black')">Black</button>
+        <button onclick="setPenColor('red')">Red</button>
+        <button onclick="setPenColor('blue')">Blue</button>
+        <button onclick="setPenColor('green')">Green</button>
+        <button onclick="clearCanvas()">Clear</button>
+        <button onclick="saveCanvas()">Save</button>
+    </div>
+</div>
+
+
+
+<footer>
+    <p>&copy; 2024 BrainSparkZone.com All rights reserved.</p>
+    <p><a href="privacy.html" style="color: white; text-decoration: underline;">Privacy Policy</a> | 
+    <a href="terms.html" style="color: white; text-decoration: underline;">Terms of Service</a></p>
+</footer>
+
+<script>
+    function changeColor(color) {
+        document.body.style.backgroundColor = color;
+    }
+
+    const canvas = document.getElementById('drawingCanvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    let penColor = 'black';
+
+    canvas.addEventListener('mousedown', (e) => {
+        drawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+        if (drawing) {
+            ctx.strokeStyle = penColor;
+            ctx.lineWidth = 2;
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+    });
+
+    canvas.addEventListener('mouseup', () => {
+        drawing = false;
+        ctx.closePath();
+    });
+
+    canvas.addEventListener('mouseout', () => {
+        drawing = false;
+        ctx.closePath();
+    });
+
+    function setPenColor(color) {
+        penColor = color;
+    }
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function saveCanvas() {
+        const link = document.createElement('a');
+        link.download = 'drawing.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    }
+</script>
+
+</body>
+</html>
